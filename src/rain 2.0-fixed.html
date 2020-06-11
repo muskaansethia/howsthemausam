@@ -20,7 +20,7 @@
 		var settings = {
 		  "async": true,
 		  "crossDomain": true,
-		  "url": "https://api.openweathermap.org/data/2.5/weather?q=bali&appid=3db1076289f04aafc4f282b3b6b808a7",
+		  "url": "https://api.openweathermap.org/data/2.5/weather?q=london&appid=3db1076289f04aafc4f282b3b6b808a7",
 		  "method": "GET"
 		}
 
@@ -29,11 +29,14 @@
 			console.log(response);
 
 			var content = Number(response.weather[0].id);
+			var temp = Math.floor(Math.floor(response.main.temp)-273.15);
 			$("#weather").append(content);
-
+			$("#temperature").append( " | " + temp + "°C")
+ 
 			if (content == 800) 
 			{
-				$("#display").text("Clear Skies");
+				$("#display").text("Clear Skies").append("&nbsp;");
+				$('<img src="clear sky.png" />').width(550).height(550).appendTo('#weatherimage');
 				$(document).ready(function()
 				{
 
@@ -44,15 +47,15 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Mausam Ye Awesome Bada",
-								m4v: "./asset/clear_sky.m4v"
-							});
+								m4v: "clear_sky.m4v"
+							}).jPlayer("play");;
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
                   },
 						smoothPlayBar: true,
@@ -65,9 +68,13 @@
 			} 
 			else if (content == 801) 
 			{
-				$("#display").text("Sunny and Few Clouds");
+				$("#display").text("Sunny and Few Clouds").append("&nbsp;");
+				var url = 'few_clouds.png';
 				$(document).ready(function()
 				{
+					var image = new Image();
+					image.src = url;
+					$('<img src="few clouds.png" />').width(550).height(550).css('text-align','center');appendTo('#weatherimage');	
 					$("#jquery_jplayer_1").jPlayer(
 					{
 						ready: function () 
@@ -75,15 +82,15 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Sunny Sunny",
-								m4v: "./asset/few_clouds.m4v"
-							});
+								m4v: "few_clouds.m4v"
+							}).jPlayer("play");;
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
 						},
 						smoothPlayBar: true,
@@ -96,7 +103,8 @@
 			}
 			else if (content == 802 || content == 803) 
 			{
-				$("#display").text("Broken Clouds");
+				$("#display").text("Broken Clouds").append("&nbsp;");
+				$('<img src="broken clouds.png" />').width(550).height(550).appendTo('#weatherimage');
 				$(document).ready(function()
 				{
 					$("#jquery_jplayer_1").jPlayer(
@@ -106,15 +114,15 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Makhna",
-								m4v: "./asset/broken_clouds.m4v"
-							});
+								m4v: "broken_clouds.m4v"
+							}).jPlayer("play");;
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
 						},
 						smoothPlayBar: true,
@@ -127,7 +135,8 @@
 			}
 			else if (content == 804) 
 			{
-				$("#display").text("Overcast Clouds");
+				$("#display").text("Overcast Clouds").append("&nbsp;");
+				$('<img src="overcast clouds.png" />').width(550).height(550).appendTo('#weatherimage');
 				$(document).ready(function()
 				{
 					$("#jquery_jplayer_1").jPlayer(
@@ -137,18 +146,19 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Ghanan Ghanan",
-								m4v: "./asset/overcast_clouds.m4v"
-							});
+								m4v: "overcast_clouds.m4v"
+							}).jPlayer("play");
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
 						},
 						smoothPlayBar: true,
+						autostart: true,
 						keyEnabled: true,
 						remainingDuration: true,
 						toggleDuration: true
@@ -158,7 +168,8 @@
 			}
 			else if (content == 300 || content == 301 || content == 302 || content == 310 || content == 311 || content == 312 || content == 313 || content == 314 || content == 321) 
 			{
-				$("#display").text("Drizzle");
+				$("#display").text("Drizzle").append("&nbsp;");
+				$('<img src="drizzle.png" />').width(550).height(550).appendTo('#weatherimage');
 				$(document).ready(function()
 				{
 					$("#jquery_jplayer_1").jPlayer(
@@ -168,15 +179,15 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Barso Re Megha",
-								m4v: "./asset/drizzle.m4v"
-							});
+								m4v: "drizzle.m4v"
+							}).jPlayer("play");;
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
 						},
 						smoothPlayBar: true,
@@ -189,7 +200,8 @@
 			}
 			else if (content == 520) 
 			{
-				$("#display").text("Light Intensity Shower Rain");
+				$("#display").text("Light Intensity Shower Rain").append("&nbsp;");
+				$('<img src="light intensity rain.png" />').width(550).height(550).appendTo('#weatherimage');
 				$(document).ready(function()
 				{
 					$("#jquery_jplayer_1").jPlayer(
@@ -199,15 +211,15 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Pyaar Hua Ikrar Hua",
-								m4v: "./asset/light_intensity_shower_rain.m4v"
-							});
+								m4v: "light_intensity_shower_rain.m4v"
+							}).jPlayer("play");;
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
 						},
 						smoothPlayBar: true,
@@ -220,7 +232,8 @@
 			}
 			else if (content == 500) 
 			{
-				$("#display").text("Light Rain");
+				$("#display").text("Light Rain").append("&nbsp;");
+				$('<img src="light rain.png" />').width(550).height(550).appendTo('#weatherimage');
 				$(document).ready(function()
 				{
 					$("#jquery_jplayer_1").jPlayer(
@@ -230,15 +243,15 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Tip Tip Barsa Paani",
-								m4v: "./asset/light_rain.m4v"
-							});
+								m4v: "light_rain.m4v"
+							}).jPlayer("play");;
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
 						},
 						smoothPlayBar: true,
@@ -251,7 +264,8 @@
 			}
 			else if (content == 501) 
 			{
-				$("#display").text("Moderate Rain");
+				$("#display").text("Moderate Rain").append("&nbsp;");
+				$('<img src="moderate rain.png" />').width(550).height(550).appendTo('#weatherimage');
 				$(document).ready(function()
 				{
 					$("#jquery_jplayer_1").jPlayer(
@@ -261,15 +275,15 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Chham Chham",
-								m4v: "./asset/moderate_rain.m4v"
-							});
+								m4v: "moderate_rain.m4v"
+							}).jPlayer("play");;
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
 						},
 						smoothPlayBar: true,
@@ -282,7 +296,8 @@
 			}
 			else if (content == 502) 
 			{
-				$("#display").text("Heavy Intensity Rain");
+				$("#display").text("Heavy Intensity Rain").append("&nbsp;");
+				$('<img src="heavy intensity rain.png" />').width(550).height(550).appendTo('#weatherimage');
 				$(document).ready(function()
 				{
 					$("#jquery_jplayer_1").jPlayer(
@@ -292,15 +307,15 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Zoobi Doobi",
-								m4v: "./asset/heavy_intensity_rain.m4v"
-							});
+								m4v: "heavy_intensity_rain.m4v"
+							}).jPlayer("play");;
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
 						},
 						smoothPlayBar: true,
@@ -313,7 +328,8 @@
 			}
 			else if (content == 503) 
 			{
-				$("#display").text("Very Heavy Rain");
+				$("#display").text("Very Heavy Rain").append("&nbsp;");
+				$('<img src="very heavy rain.png" />').width(550).height(550).appendTo('#weatherimage');
 				$(document).ready(function()
 				{
 					$("#jquery_jplayer_1").jPlayer(
@@ -323,15 +339,15 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Bhaage Re Mann",
-								m4v: "./asset/very_heavy_rain.m4v"
-							});
+								m4v: "very_heavy_rain.m4v"
+							}).jPlayer("play");;
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
 						},
 						smoothPlayBar: true,
@@ -344,7 +360,8 @@
 			}
 			else if (content == 504 || content == 511 || content == 522) 
 			{
-				$("#display").text("Freezing Rain");
+				$("#display").text("Freezing Rain").append("&nbsp;");
+				$('<img src="freezing rain.png" />').width(550).height(550).appendTo('#weatherimage');
 				$(document).ready(function()
 				{
 					$("#jquery_jplayer_1").jPlayer(
@@ -354,15 +371,15 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Tum Hi Ho",
-								m4v: "./asset/freezing_rain.m4v"
-							});
+								m4v: "freezing_rain.m4v"
+							}).jPlayer("play");;
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
 						},
 						smoothPlayBar: true,
@@ -375,7 +392,8 @@
 			}
 			else if (content == 521 || content == 531) 
 			{
-				$("#display").text("Shower Rain");
+				$("#display").text("Shower Rain").append("&nbsp;");
+				$('<img src="shower rain.png" />').width(550).height(550).appendTo('#weatherimage');
 				$(document).ready(function()
 				{
 					$("#jquery_jplayer_1").jPlayer(
@@ -385,15 +403,15 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Idhar Chala Mein Udhar Chala",
-								m4v: "./asset/shower_rain.m4v"
-							});
+								m4v: "shower_rain.m4v"
+							}).jPlayer("play");;
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
 						},
 						smoothPlayBar: true,
@@ -406,7 +424,8 @@
 			}
 			else if (content == 202 || content == 212 || content == 221 || content == 230 || content == 232) 
 			{
-				$("#display").text("Thunderstorm");
+				$("#display").text("Thunderstorm").append("&nbsp;");
+				$('<img src="thunderstorm.png" />').width(550).height(550).appendTo('#weatherimage');
 				$(document).ready(function()
 				{
 					$("#jquery_jplayer_1").jPlayer(
@@ -416,15 +435,15 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Ang Laga Le Balma",
-								m4v: "./asset/thunderstorm.m4v"
-							});
+								m4v: "thunderstorm.m4v"
+							}).jPlayer("play");;
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
 						},
 						smoothPlayBar: true,
@@ -437,7 +456,8 @@
 			}
 			else if (content == 200 || content == 201 || content == 210 || content == 211 || content == 231 ) 
 			{
-				$("#display").text("Light Thunderstorm");
+				$("#display").text("Light Thunderstorm").append("&nbsp;");
+				$('<img src="light thunderstorm.png" />').width(550).height(550).appendTo('#weatherimage');
 				$(document).ready(function()
 				{
 					$("#jquery_jplayer_1").jPlayer(
@@ -447,15 +467,15 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Koi Ladki Hai",
-								m4v: "./asset/light_thunderstorm.m4v"
-							});
+								m4v: "light_thunderstorm.m4v"
+							}).jPlayer("play");;
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
 						},
 						smoothPlayBar: true,
@@ -468,7 +488,8 @@
 			}
 			else if (content == 600 || content == 615 || content == 616 || content == 620 || content == 621) 
 			{
-				$("#display").text("Light Snow");
+				$("#display").text("Light Snow").append("&nbsp;");
+				$('<img src="light snow.png" />').class="center".width(550).height(550).appendTo('#weatherimage');
 				$(document).ready(function()
 				{
 					$("#jquery_jplayer_1").jPlayer(
@@ -478,15 +499,15 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Ishq Shava",
-								m4v: "./asset/light_snow.m4v"
-							});
+								m4v: "light_snow.m4v"
+							}).jPlayer("play");;
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
 						},
 						smoothPlayBar: true,
@@ -499,7 +520,8 @@
 			}
 			else if (content == 601 || content == 602 || content == 611 || content == 612 || content == 613 || content == 622) 
 			{
-				$("#display").text("Snow");
+				$("#display").text("Snow").append("&nbsp;");
+				$('<img src="snow.png" />').width(550).height(550).appendTo('#weatherimage');
 				$(document).ready(function()
 				{
 					$("#jquery_jplayer_1").jPlayer(
@@ -509,15 +531,15 @@
 							$(this).jPlayer("setMedia", 
 							{
 								title: "Dil Diyaan Gallan",
-								m4v: "./asset/snow.m4v"
-							});
+								m4v: "snow.m4v"
+							}).jPlayer("play");;
 						},
 						swfPath: "js",
 						supplied: "m4v",
 						size: 
 						{
-							width: "640px",
-							height: "360px",
+							width: "1440px",
+							height: "500px",
 							cssClass: "jp-video-360p"
 						},
 						smoothPlayBar: true,
@@ -536,76 +558,38 @@
 	</script>
   </head>
   <body>
+	<div><img id="howsthemausam" src="london skyline-11.png" style="height: 100%; width: 100%;"></img></div><br>
     <div id="container">
-      <div id="body">
-		<div class="mainTitle" >BOLLYWOOD WEATHER FORECAST</div><br>
-		  <div id="weather" style="text-align: center;">Weather: </div><br>
-		  <p id="display" style="text-align: center;"></p>
-		
-        <div class="height20"></div>
-        <article>
-		<div class="height20"></div>
-		<div style="width: 640px; margin: 0 auto;">
-		<div class="height10"></div>
-			
-			
-		
-		<div id="jp_container_1" class="jp-video jp-video-360p">
-			<div class="jp-type-single">
-				<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-				<div class="jp-gui">
-					<div class="jp-interface">
-						<div class="jp-progress">
-							<div class="jp-seek-bar">
-								<div class="jp-play-bar"></div>
-							</div>
-						</div>
-						<div class="jp-current-time"></div>
-						<div class="jp-duration"></div>
-						<div class="jp-details">
-							<ul>
-								<li><span class="jp-title"></span></li>
-							</ul>
-						</div>
-						<div class="jp-controls-holder">
-							<ul class="jp-controls">
-								<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
-								<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
-								<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
-								<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
-								<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
-								<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
-							</ul>
-							<div class="jp-volume-bar">
-								<div class="jp-volume-bar-value"></div>
-							</div>
-
-							<ul class="jp-toggles">
-								<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>
-								<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>
-								<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
-								<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
-							</ul>
+		<div id="body">
+			<!-- <div id="weather" style="text-align: center;">Weather: </div><br>
+			<article style="align-self: initial;"> -->
+				<div id="jp_container_1" class="jp-video jp-video-360p">
+					<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+					<div class="jp-gui">
+						<div class="jp-interface">
 						</div>
 					</div>
+					<div class="jp-no-solution">
+						<span>Update Required</span>
+						To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+					</div>
 				</div>
-				<div class="jp-no-solution">
-					<span>Update Required</span>
-					To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-				</div>
-			</div>
+			</article>
 		</div>
 
-		
-		
-            
-        </div>
-		  
-		<div class="height10"></div>
-        </article>
-        <div class="height10"></div>
-		<div class="row"></div>
-
-
-  </body>
+		<div id="grad1">
+			
+			<div id="weatherimage"></div>
+			<div class="center" style="overflow: hidden; text-align: center; display: block; margin-left: auto; margin-right: auto; width: 100%;">
+				<span id="display" style= "display: contents; color: #ffffff; font-size: 30px; font-family: 'Courier New', Courier, monospace; text-align: center;"></span>
+				<span id="temperature" style="display: contents; color: #ffffff; font-size: 30px; font-family: 'Courier New', Courier, monospace; text-align: center;"></span>
+			</div>
+			
+			<div id="footer1"><img src="london skyline-12.png" style="height: 100%; width: 100%;"></img></div><br>
+		</div>
+		<div id="footer2">
+			About Bollywood | Mausam Playlist
+		</div>
+    </div>
+</body>
 </html>
